@@ -3,13 +3,13 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter', 
   screenshotOnRunFailure: true, 
-  screenshotsFolder: 'my-custom-screenshots-folder',
+  screenshotsFolder: 'screenshots-folder',
   projectId: '44jcxm', 
   video: true, 
   e2e: {
-    baseUrl: 'http://192.168.30.123:8099',
+    baseUrl: 'http://192.168.30.101:9090',
     viewportWidth: 1280, 
-    viewportHeight: 720,
+    viewportHeight:780,
     experimentalOriginDependencies: true, 
     setupNodeEvents(on, config) {
       

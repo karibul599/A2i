@@ -9,7 +9,7 @@ describe("A2i Finance-Feature(VAT/AIT)", () => {
     function a2iLogin() {
       //Login section
       cy.visit("http://localhost:4200/");
-      cy.origin("http://192.168.30.123:8080", () => {
+      cy.origin("http://192.168.30.101:9090", () => {
         cy.get('input[name="username"]').type("jahanger.alam@a2i.gov.bd");
         cy.get('input[name="password"]').type("@#$12345Bmail");
         cy.get("#kc-login").should("exist").and("be.visible").click();
@@ -76,7 +76,7 @@ describe("A2i Finance-Feature(VAT/AIT)", () => {
     //Login section
     function a2iLogin() {
       cy.visit("http://localhost:4200/");
-      cy.origin("http://192.168.30.123:8080", () => {
+      cy.origin("http://192.168.30.101:9090", () => {
         cy.get('input[name="username"]').type("jahanger.alam@a2i.gov.bd");
         cy.get('input[name="password"]').type("@#$12345Bmail");
         cy.get("#kc-login").should("exist").and("be.visible").click();
