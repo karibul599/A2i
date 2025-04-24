@@ -11,7 +11,7 @@ export default class contractManagement{
           .and('be.visible')
           .click()
     }
-    addNewContractManagement(randomName){
+    addNewContractManagement(randomName, packageTitle,referenceNo){
         const x=500;
         //Consultant Type
         cy.get('[formcontrolname="consultantType"]')
@@ -57,27 +57,27 @@ export default class contractManagement{
         cy.get('[formcontrolname="procurementTitle"]')
           .should('exist')
           .and('be.visible')
-          .type('Title-1')
+          .type(packageTitle)
         cy.wait(x)
         //Contract Reference No
         cy.get('[formcontrolname="contractReferenceNo"]')
           .should('exist')
           .and('be.visible')
-          .type('Reference-WE4567')
+          .type(referenceNo)
         cy.wait(x)
         //Contract Start Date
         cy.get('[formcontrolname="contractStartDate"]')
           .clear()
           .should('exist')
           .and('be.visible')
-          .type('01/01/2024')
+          .type('01/01/2025')
         cy.wait(x)
         //Contract End Date
         cy.get('[formcontrolname="contractEndDate"]')
           .clear()
           .should('exist')
           .and('be.visible')
-          .type('31/12/2024')
+          .type('31/12/2026')
         cy.wait(x)
         //Contract Length(In Month)= 1 year
         //Total Contract Value= 50000 per month
@@ -101,7 +101,7 @@ export default class contractManagement{
           .clear()
           .should('exist')
           .and('be.visible')
-          .type('31/12/2024')
+          .type('31/01/2025')
         cy.wait(x)
         //AMOUNT
         cy.get('[formcontrolname="amount"]')
@@ -127,7 +127,7 @@ export default class contractManagement{
           .and('be.visible')
           .click()
         cy.wait(x)
-        cy.xpath('/html/body/div[3]/div/div/div/mat-option[1]')
+        cy.contains(' Business Automation Ltd. ').scrollIntoView()
           .should('exist')
           .and('be.visible')
           .click()
@@ -194,17 +194,8 @@ export default class contractManagement{
         cy.contains(' Save ')
           .should('exist')
           .and('be.visible').click()
-          
-
         
-
-
-
-
-
-
     }
-     
-
+    
 
 }

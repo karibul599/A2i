@@ -1,19 +1,22 @@
-import LoginPageAction from "../../support/page_objects/My DeteilsAction/LoginPageAction";
+import a2iLogin from "../../support/page_objects/a2iLogin";
 import AddNewReportAction from "../../support/page_objects/My DeteilsAction/AddNewActivityAction";
 import AproveARtAction from "../../support/page_objects/TeamAction/AproveARAction";
 import RetainARAction from "../../support/page_objects/TeamAction/RetainARAction";
 import RejectARAction from "../../support/page_objects/TeamAction/RejectARAction";
 import RejectAndRetainConfirm from "../../support/page_objects/My DeteilsAction/RejectAndRetainConfirmAction";
 describe(" Activity Report and Approve ", () => {
-  const loginPageAction = new LoginPageAction(); //********/
+  const login = new a2iLogin(); //********/
   const addNewReportAction = new AddNewReportAction(); //********/
   const aproveARtAction = new AproveARtAction(); //********/
 
   it("Applicant Login and Add new Activity Report", () => {
     // Applicant Login
-    const userName = "rakib.younus@a2i.gov.bd";
-    const password = "@#$12345Bmail";
-    loginPageAction.performloginPageAction(userName, password);
+  
+    login.visitA2iLoginPage();
+    const username='rakib.younus@a2i.gov.bd'
+    const password='@#$12345Bmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //Add New Activity
     
     //Create Monthly Activity Report
@@ -34,25 +37,30 @@ describe(" Activity Report and Approve ", () => {
     a2iLogin();
     function a2iLogin() {
       //Login
-      const userName = "jalal.ahmed@a2i.gov.bd";
-      const password = "@#$12345Bmail";
-      loginPageAction.performloginPageAction(userName, password);
+      login.visitA2iLoginPage();
+      const username='jalal.ahmed@a2i.gov.bd'
+      const password='@#$12345Bmail'
+      login.visitKeycloakOriginToA2iUserLogin(username, password)
+      login.delayMS(1000)
       //Approve Report
       aproveARtAction.performaproveARtAction();
     }
   });
 });
 describe("Activity Report and Retain ", () => {
-  const loginPageAction = new LoginPageAction(); //********/
+  const login = new a2iLogin(); //********/
   const addNewReportAction = new AddNewReportAction(); //********/
   const retainARAction = new RetainARAction(); //********/
   const rejectAndRetainConfirm = new RejectAndRetainConfirm(); //********/
 
   it("Applicant Login and Add new Activity Report", () => {
     // Applicant Login
-    const userName = "rakib.younus@a2i.gov.bd";
-    const password = "@#$12345Bmail";
-    loginPageAction.performloginPageAction(userName, password);
+     
+    login.visitA2iLoginPage();
+    const username='rakib.younus@a2i.gov.bd'
+    const password='@#$12345Bmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //Add New Activity
     
     //Create Monthly Activity Report
@@ -73,9 +81,11 @@ describe("Activity Report and Retain ", () => {
     a2iLogin();
     function a2iLogin() {
       //Login
-      const userName = "jalal.ahmed@a2i.gov.bd";
-      const password = "@#$12345Bmail";
-      loginPageAction.performloginPageAction(userName, password);
+      login.visitA2iLoginPage();
+      const username='jalal.ahmed@a2i.gov.bd'
+      const password='@#$12345Bmail'
+      login.visitKeycloakOriginToA2iUserLogin(username, password)
+      login.delayMS(1000)
       //Approve Report
       const Remark='Update This'
       retainARAction.performretainARAction(Remark);
@@ -83,16 +93,18 @@ describe("Activity Report and Retain ", () => {
   }); 
 });
 describe(" Activity Report and Reject ", () => {
-  const loginPageAction = new LoginPageAction(); //********/
+  const login = new a2iLogin(); //********/
   const addNewReportAction = new AddNewReportAction(); //********/
   //const aproveARtAction = new AproveARtAction(); //********/
   const rejectARAction = new RejectARAction(); //********/
 
   it("Applicant Login and Add new Activity Report", () => {
     // Applicant Login
-    const userName = "rakib.younus@a2i.gov.bd";
-    const password = "@#$12345Bmail";
-    loginPageAction.performloginPageAction(userName, password);
+    login.visitA2iLoginPage();
+    const username='rakib.younus@a2i.gov.bd'
+    const password='@#$12345Bmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //Add New Activity
     
     //Create Monthly Activity Report
@@ -113,11 +125,13 @@ describe(" Activity Report and Reject ", () => {
     a2iLogin();
     function a2iLogin() {
       //Login
-      const userName = "jalal.ahmed@a2i.gov.bd";
-      const password = "@#$12345Bmail";
-      loginPageAction.performloginPageAction(userName, password);
+    login.visitA2iLoginPage();
+    const username='jalal.ahmed@a2i.gov.bd'
+    const password='@#$12345Bmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
       //Reject Application
-      rejectARAction.performrejectARAction();
+    rejectARAction.performrejectARAction();
     }
   });
 });

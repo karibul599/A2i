@@ -13,6 +13,7 @@ describe("(Module: Finance(Receive)", () => {
     login.delayMS(1000)
     clickBtn.clickA2iFinanceBtn()
     createReceive.clickA2iReceiveBtn()
+    login.delayMS(1000)
     createReceive.fillupReceiveform()
     createReceive.uploadfile()
     login.delayMS(1000)

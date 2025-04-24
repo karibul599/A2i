@@ -1,0 +1,109 @@
+export default class jourarAdjustment{
+    clickJourarAdjustment() {
+        cy.get('a[href="/finance/journal-adjustment-list"]').click();
+      }
+    newAdjustment(){
+        //Create Adjustment
+        const x=500;
+        //Payment Type
+        cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-journal-adjustment/app-journal-adjustment-form-shell/app-journal-adjustment-form/div/div/div[1]/div[1]/mat-form-field/div[1]/div/div[2]/input')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        cy.wait(x)
+        cy.contains(' Cash Advance ')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        //Payee 
+        cy.get('[formcontrolname="contractAdminister"]')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        cy.wait(x)
+        cy.xpath('/html/body/div[3]/div/div/div/mat-option[3]')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        //adjusted Transaction
+        cy.get('[formcontrolname="adjustedTransaction"]')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        cy.wait(x)
+        cy.xpath('/html/body/div[3]/div/div/div/mat-option[1]/span')
+          .should('exist')
+          .and('be.visible')
+          .click()
+
+
+        //Fund Source 
+        cy.get('[formcontrolname="fundSource"]')
+          .should('exist')
+          .and('be.visible')
+          .click({ multiple: true })
+        cy.wait(x)
+        cy.contains(' UNDP ')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        //Type ( Payee )
+        cy.get('[formcontrolname="payeeType"]')
+          .should('exist')
+          .and('be.visible')
+          .click({ multiple: true })
+        cy.wait(x)
+        cy.contains(' Account ')
+          .should('exist')
+          .and('be.visible')
+          .click() 
+        //Adjust To (Payee)
+        cy.get('[formcontrolname="payee"]')
+          .should('exist')
+          .and('be.visible')
+          .click({ multiple: true })
+        cy.wait(x)
+        cy.contains(' Cash in Hand - UNDP ')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        //Receive Amount
+        cy.get('[formcontrolname="receiveAmount"]')
+          .clear()
+          .should('exist')
+          .and('be.visible')
+          .type('1000')
+        cy.wait(x)
+        //Payment Method
+        cy.get('[formcontrolname="receiverPaymentMethod"]')
+          .click({ multiple: true })
+        cy.wait(x)
+        cy.xpath('/html/body/div[3]/div/div/div/mat-option[1]/span')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        //Financial Codes 
+        cy.get('[formcontrolname="receiverFinancialCode"]')
+          .should('exist')
+          .and('be.visible')
+          .click({ multiple: true })
+        cy.wait(x)
+        cy.xpath('/html/body/div[3]/div/div/div/mat-option[1]/span')
+          .should('exist')
+          .and('be.visible')
+          .click()
+        //Ref / cheque
+        cy.get('[formcontrolname="receiverReference"]')
+          .should('exist')
+          .and('be.visible')
+          .type('ref-543256')
+        cy.wait(x)
+        //click Adjust
+        cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-journal-adjustment/app-journal-adjustment-form-shell/app-journal-adjustment-form/div/div/div[6]/button[1]/span[2]/div/span')
+          .should('exist')
+          .and('be.visible')
+          .click()
+
+
+    }
+}

@@ -1,31 +1,23 @@
+import a2iLogin from "../../support/page_objects/a2iLogin";
+import financeBtn from "../../support/page_objects/financeBtn";
+import jourarAdjustment from "../../support/page_objects/journalAdjustment";
 describe("A2i Journal Adjustment", () => {
+  const login=new a2iLogin()
+  const clickBtn=new financeBtn();
+  const newJourarAdjustment=new jourarAdjustment();
   it("Login,FinanceBtn,ReceiveBtn,Receive- Application With no file(Cashbook),Receive- Application With no file(No Cashbook) ,", () => {
-    a2iLogin();
-    a2iFinanceBtn();
-    a2iPaymentBtn();
-    a2iApplication();
+    
+    login.visitA2iLoginPage();
+    const username='jahanger.alam@a2i.gov.bd'
+    const password='temp1234'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
+    clickBtn.clickA2iFinanceBtn()
+    newJourarAdjustment.clickJourarAdjustment()
+    newJourarAdjustment.newAdjustment()
+    login.delayMS(1000)
 
-    function a2iLogin() {
-      cy.visit("http://localhost:4200/");
-      cy.origin("http://192.168.30.123:8080", () => {
-        cy.get('input[name="username"]').type("jahanger.alam@a2i.gov.bd");
-        cy.get('input[name="password"]').type("@#$12345Bmail");
-        cy.get("#kc-login").should("exist").and("be.visible").click();
-      });
-      cy.wait(5000);
-      cy.visit("http://localhost:4200/");
-      cy.wait(1000);
-    }
-
-    function a2iFinanceBtn() {
-      cy.xpath(
-        "/html/body/app-root/app-erp-sidenav/div/aside/nav/div/div/div[2]/mat-nav-list/div[5]/div[1]"
-      ).click();
-    }
-
-    function a2iPaymentBtn() {
-      cy.get('a[href="/finance/journal-adjustment-list"]').click();
-    }
+    
 
     function a2iApplication() {
       cy.xpath(

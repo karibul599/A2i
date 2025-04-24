@@ -1,11 +1,13 @@
 export default class a2iLogin {
 //Visit URl 
   visitA2iLoginPage() {
-  return cy.visit('http://localhost:4200');  
+    //return cy.visit('https://dev-a2ierp.oss.net.bd/'); 
+    return cy.visit('http://localhost:4200');  
   }
   visitKeycloakOriginToA2iUserLogin(username, password) {
 //Login section
-  return cy.origin("http://192.168.30.101:9090",{ args: { username, password } }, ({ username, password }) => {
+//http://192.168.30.101:9090
+   cy.origin("http://192.168.30.101:9090",{ args: { username, password } }, ({ username, password }) => {
          cy.get('input[name="username"]')
            .should("exist")
            .and("be.visible")
@@ -18,13 +20,12 @@ export default class a2iLogin {
            .should("exist")
            .and("be.visible")
            .click();
-    });
-      
+    });   
   }
 //Delay time   
   delayMS(x){
   return cy.wait(x);
-    
+   
   }
 }
   

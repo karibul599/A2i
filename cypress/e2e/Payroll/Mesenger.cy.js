@@ -7,14 +7,13 @@ describe("A2i Journal Adjustment", () => {
 
     function a2iLogin() {
       cy.visit("http://localhost:4200/");
-      cy.origin("http://192.168.30.123:8080", () => {
+      cy.origin("http://192.168.30.101:9090", () => {
         cy.get('input[name="username"]').type("jahanger.alam@a2i.gov.bd");
-        cy.get('input[name="password"]').type("@#$12345Bmail");
+        cy.get('input[name="password"]').type("temp1234");
         cy.get("#kc-login").should("exist").and("be.visible").click();
       });
       cy.wait(5000);
-      cy.visit("http://localhost:4200/");
-      cy.wait(1000);
+      
     }
 
     function a2iPayroll() {

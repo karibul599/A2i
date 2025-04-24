@@ -82,7 +82,7 @@ describe('(Module: Finance(IOU)',()=>{
   const login=new a2iLogin();
   const clickBtn=new financeBtn();
   const addNewIOURequest=new iOUUserRequest();
-  it('',()=>{
+  it('Login,FinanceBtn,IOUBtn,IOURequest-(Create IOU Request,Download IOU Request )',()=>{
     login.visitA2iLoginPage()
     const username = [
       "jahanger.alam@a2i.gov.bd",

@@ -4,5 +4,6 @@ export default class financeBtn{
           .should('exist')
           .and('be.visible')
           .click()
+        
       }
 }
