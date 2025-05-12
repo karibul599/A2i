@@ -15,7 +15,7 @@ export default class TimeSheetRetainAction {
     timeSheetRetainAction.ClickTimeSheetBtn().click();
     timeSheetRetainAction.wait1000();
     //Click Application Select Btn 
-    timeSheetRetainAction.ClickApplicationSelectBtn().click({force: true});
+    timeSheetRetainAction.ClickApplicationSelectBtn();
     timeSheetRetainAction.wait1000();
     //click Retain Btn
     timeSheetRetainAction.clickRetainBtn().click({force: true});

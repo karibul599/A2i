@@ -1,7 +1,7 @@
 export default class AddNewReport {
      //Click My Details Btn 
     ClickMyDetailsBtn(){
-    return cy.xpath('/html/body/app-root/app-erp-sidenav/div/aside/nav/div/div/div[2]/mat-nav-list/div[7]/div[1]/mat-icon');
+    return cy.contains('My Details');
     }
     //Click Activity Report Btn
     ClickActivityReportBtn(){
@@ -13,7 +13,7 @@ export default class AddNewReport {
         }
     //Click Year 
     clickYearBtn(){
-        return cy.xpath('/html/body/div[3]/div[2]/div/mat-datepicker-content/div[2]/mat-calendar/div/mat-multi-year-view/table/tbody/tr[3]/td[1]/button/span[1]');
+        return cy.xpath('/html/body/div[3]/div[2]/div/mat-datepicker-content/div[2]/mat-calendar/div/mat-multi-year-view/table/tbody/tr[3]/td[2]/button/span[1]');
         }
     //Click Month Btn
    

@@ -69,6 +69,7 @@ export default class receive{
           .should('exist')
           .and('be.visible')
           .click()
+        cy.wait(1000)
     }
     clickSaveandRetain(){
         cy.contains('Save and Retain')

@@ -1,7 +1,7 @@
 export default class EmailEditApplication {
     OpenApplication(){
         //Open Application
-        return cy.get('[mattooltip="Open"]');
+        return cy.get('[mattooltip="Open"]').eq(0);
           
     }
     AddEmail(){

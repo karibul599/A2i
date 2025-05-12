@@ -9,7 +9,36 @@ export default class RetainAR {
    }
    //Click Application Select Btn
    ClickApplicationSelectBtn(){
-       return cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-team-activity-report/app-team-activity-report-list-shell/app-team-activity-report-list/div/div/mat-table/mat-row/mat-cell[1]/mat-checkbox/div/div/input');
+        cy.get('[type="checkbox"]').eq(0).then(($checkbox) => {
+        if ($checkbox.length > 0) {
+          cy.wrap($checkbox).check({ force: true });
+        } else {
+          cy.get('[formcontrolname="month"]').should('be.visible').clear().type('05/2025');
+          cy.contains(' Filter Data ').should('be.visible').click();
+          
+          cy.get('[type="checkbox"]').eq(0).then(($checkbox) => {
+            if ($checkbox.length > 0) {
+              cy.wrap($checkbox).check({ force: true });
+            } else {
+              cy.get('[formcontrolname="month"]').should('be.visible').clear().type('06/2025');
+              cy.contains(' Filter Data ').should('be.visible').click();
+              
+              
+              cy.get('[type="checkbox"]').eq(0).then(($checkbox) => {
+                if ($checkbox.length > 0) {
+                  cy.wrap($checkbox).check({ force: true });
+                } else {
+                  
+                  cy.log('Checkbox still not found after trying multiple months.');
+                }
+              });
+              
+            }
+          });
+        }
+      });
+      
+       ;
        }
    //click Approve Btn 
    clickRetainBtn(){

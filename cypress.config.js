@@ -10,9 +10,8 @@ module.exports = defineConfig({
   e2e: {
    // baseUrl: 'http://192.168.30.101:9090',
     viewportWidth: 1280, 
-    viewportHeight:780,
-    experimentalOriginDependencies: true, 
-    setupNodeEvents(on, config) {
+    viewportHeight:1280,
+    experimentalOriginDependencies: true,      setupNodeEvents(on, config) {
       
       require('cypress-mochawesome-reporter/plugin')(on);
       

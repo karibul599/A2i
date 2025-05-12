@@ -1,7 +1,7 @@
 class LoginPage {
     // Define the elements
     visit() {
-      cy.visit('https://xy.com/login');  // Replace 'xy.com/login' with your actual URL
+      cy.visit('http://localhost:4200/public/user-registration-entry-point');  // Replace 'xy.com/login' with your actual URL
     }
 
     getUsernameInput() {

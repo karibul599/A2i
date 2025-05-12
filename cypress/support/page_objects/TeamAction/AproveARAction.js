@@ -15,13 +15,14 @@ export default class AproveARtAction {
     aproveARtAction.ClickTeamActivityReportBtn().click();
     aproveARtAction.wait1000();
     //Click Application Select Btn 
-    aproveARtAction.ClickApplicationSelectBtn().click();
+    aproveARtAction.ClickApplicationSelectBtn()
     aproveARtAction.wait1000();
     //click ApproveBtn
     aproveARtAction.clickApproveBtn().click();
     aproveARtAction.wait1000();
     //click Confirm Approve Btn
     aproveARtAction.clickConfirmApproveBtn().click({force: true});
+    aproveARtAction.wait1000();
     aproveARtAction.wait1000();
     
   }

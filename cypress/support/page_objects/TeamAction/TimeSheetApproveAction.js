@@ -15,7 +15,7 @@ export default class TimeSheetApproveAction {
     timeSheetApproveAction.ClickTimeSheetBtn().click();
     timeSheetApproveAction.wait1000();
     //Click Application Select Btn 
-    timeSheetApproveAction.ClickApplicationSelectBtn().click();
+    timeSheetApproveAction.ClickApplicationSelectBtn();
     timeSheetApproveAction.wait1000();
     //click ApproveBtn
     timeSheetApproveAction.clickApproveBtn().click();

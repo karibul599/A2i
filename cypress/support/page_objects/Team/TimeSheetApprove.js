@@ -9,7 +9,7 @@ export default class TimeSheetApprove {
    }
    //Click Application Select Btn
    ClickApplicationSelectBtn(){
-       return cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-tm-timesheet/app-tm-timesheet-list-shell/app-tm-timesheet-list/div/div/div/div[2]/mat-table/mat-row[4]/mat-cell[1]/div/mat-checkbox/div/div/input');
+       return cy.get('[type="checkbox"]').eq(0).should('exist').check({ force: true });
        }               
    //click Approve Btn 
    clickApproveBtn(){

@@ -7,7 +7,7 @@ export default class LoginPage {
    VisitOrigin(userName,password) {
        //Login section
        
-       return cy.origin("http://192.168.30.123:8080", { args: { userName, password } }, ({ userName, password }) => {
+       return cy.origin("http://192.168.30.101:9090", { args: { userName, password } }, ({ userName, password }) => {
  
          cy.get('input[name="username"]').type(userName);
          cy.get('input[name="password"]').type(password);

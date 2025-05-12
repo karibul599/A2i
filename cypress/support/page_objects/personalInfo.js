@@ -52,7 +52,7 @@ export default class personalInfo{
           .click()                                    
     }
     checkBoxValodation(){
-        cy.get('[id="mat-mdc-checkbox-2-input"]')
+        cy.get('[id="mat-mdc-checkbox-1-input"]')
           .uncheck()
           .type('01402345678')
         cy.get('[ng-reflect-name="contactNumber2"]')

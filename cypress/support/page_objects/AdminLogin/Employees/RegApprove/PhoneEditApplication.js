@@ -1,7 +1,7 @@
 export default class PhoneApplication {
     OpenApplication(){
         //Open Application
-        return cy.get('[mattooltip="Open"]');
+        return cy.get('[mattooltip="Open"]').eq(0);
           
     }
     Next() {

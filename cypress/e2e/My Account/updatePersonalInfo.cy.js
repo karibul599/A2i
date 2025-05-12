@@ -6,7 +6,7 @@ describe('Module name: My Account',()=>{
     it('A2i user existing profile Update',()=>{
         login.visitA2iLoginPage()
         const username='jalal.ahmed@a2i.gov.bd'
-        const password='@#$12345Bmail'
+        const password='12345#Kmail'
         login.visitKeycloakOriginToA2iUserLogin(username, password)
         login.delayMS(1000)
         profile.clickMyAccountbtn()

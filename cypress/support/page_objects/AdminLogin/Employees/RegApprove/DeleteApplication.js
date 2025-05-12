@@ -1,10 +1,10 @@
 export default class DeleteApplication {
     ClickDeleteBtn(){
-        return cy.get('[aria-label="delete"]');
+        return cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-registration-approval/app-registration-approval-list-shell/app-registration-approval-list/div/div/mat-table/mat-row[1]/mat-cell[7]/div/section/button[2]/span[4]');
           
     }
     ClickToSureDeleteBtn(){
-      return cy.xpath('/html/body/div[3]/div[2]/div/mat-dialog-container/div/div/app-common-delete-confirmation-dialog/div/div[2]/button[1]');
+      return cy.contains(' Continue ').should('be.visible');
     }
     wait500(){
         const x=500;

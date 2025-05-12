@@ -43,6 +43,8 @@ export default class ContractInformationAction {
     contractInformationAction.UploadPDF().attachFile(UploadPDF);
     contractInformationAction.wait1000();
     contractInformationAction.wait1000();
+    contractInformationAction.wait1000();
+    contractInformationAction.wait1000();
 
     //Next Page
     contractInformationAction.NextToSubmit().scrollIntoView().click({ force: true });

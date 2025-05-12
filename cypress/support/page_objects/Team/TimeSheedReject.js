@@ -5,16 +5,16 @@ export default class TimeSheetReject {
    }
    //Click Team Activity Report Btn
    ClickTimeSheetBtn(){
-   return cy.get('a[href="/team/team-timesheet"]');   
+   return cy.get('a[href="/team/team-activity-report"]');   
    }
 
    clickReportBtn(){
-       return cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-tm-timesheet/app-tm-timesheet-list-shell/app-tm-timesheet-list/div/div/div/div[2]/mat-table/mat-row[4]/mat-cell[8]/div/button[2]/span[4]');
+       return cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-team-activity-report/app-team-activity-report-list-shell/app-team-activity-report-list/div/div/mat-table/mat-row/mat-cell[8]/div/section/button[1]/span[4]');
                        
     }
     //Reject
    Reject(){
-        return cy.xpath('/html/body/div[3]/div[2]/div/mat-dialog-container/div/div/app-salary-document-attachment-preview-and-downloader/div/div/button[2]/mat-icon');
+        return cy.xpath('/html/body/div[3]/div[2]/div/mat-dialog-container/div/div/app-team-activity-report-approval-dialog/app-ic-gob-approval-form/div/div[2]/button[2]/span[2]');
         }
 
    wait500(){

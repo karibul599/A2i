@@ -12,7 +12,7 @@ describe("Time Sheet and Approve ", () => {
 it("Applicant Login and Add new Attendance", () => {
     // Applicant Login
     const userName = "rakib.younus@a2i.gov.bd";
-    const password = "@#$12345Bmail";
+    const password = "12345#Kmail";
     loginPageAction.performloginPageAction(userName, password);
     //Add New Activity
     
@@ -35,7 +35,7 @@ it("Supervisor Login and Approve Attendance", () => {
     function a2iLogin() {
       //Login
       const userName = "jalal.ahmed@a2i.gov.bd";
-      const password = "@#$12345Bmail";
+      const password = "12345#Kmail";
       loginPageAction.performloginPageAction(userName, password);
       //Approve TimeSheet
       timeSheetApproveAction.performtimeSheetApproveAction();
@@ -49,7 +49,7 @@ describe("Time Sheet and Retain  ", () => {
 it("Applicant Login and Add new Attendance", () => {
       // Applicant Login
       const userName = "rakib.younus@a2i.gov.bd";
-      const password = "@#$12345Bmail";
+      const password = "12345#Kmail";
       loginPageAction.performloginPageAction(userName, password);
       //Add New Activity
       
@@ -72,7 +72,7 @@ it("Supervisor Login and Retain Attendance", () => {
       function a2iLogin() {
         //Login
         const userName = "jalal.ahmed@a2i.gov.bd";
-        const password = "@#$12345Bmail";
+        const password = "12345#Kmail";
         loginPageAction.performloginPageAction(userName, password);
         //Retain TimeSheet
         const Status='Fail';
@@ -87,7 +87,7 @@ describe("Time Sheet and Reject  ", () => {
 it("Applicant Login and Add new Attendance", () => {
       // Applicant Login
       const userName = "rakib.younus@a2i.gov.bd";
-      const password = "@#$12345Bmail";
+      const password = "12345#Kmail";
       loginPageAction.performloginPageAction(userName, password);
       //Add New Activity
       
@@ -110,7 +110,7 @@ it("Supervisor Login and Reject Attendance", () => {
       function a2iLogin() {
         //Login
         const userName = "jalal.ahmed@a2i.gov.bd";
-        const password = "@#$12345Bmail";
+        const password = "12345#Kmail";
         loginPageAction.performloginPageAction(userName, password);
         //Reject Attendance
         timeSheetRejectAction.performtimeSheetRejectAction();

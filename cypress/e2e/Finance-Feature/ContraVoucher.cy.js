@@ -8,7 +8,7 @@ describe("A2i ContraVoucher", () => {
   it("Login,FinanceBtn,ContraVoucher,make ContraVoucher ,", () => {
     login.visitA2iLoginPage();
     const username='jahanger.alam@a2i.gov.bd'
-    const password='temp1234'
+    const password='12345#Kmail'
     login.visitKeycloakOriginToA2iUserLogin(username, password)
     login.delayMS(1000)
     clickBtn.clickA2iFinanceBtn()

@@ -32,7 +32,7 @@ createFoodBill(){
      .and('be.visible')
      .click()
    cy.wait(x)
-   cy.contains(' Title-1 ')
+   cy.xpath('/html/body/div[3]/div/div/div/mat-option[2]/span')
      .should('exist')
      .and('be.visible')
      .click()

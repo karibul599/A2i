@@ -6,7 +6,7 @@ export default class payment{
           .click()
       }
     fillupPaymentForm(paymentName) {
-        const x=700;
+        const x=2000;
         //Cashbook Type
         cy.contains("Cashbook");
         //Payment Type
@@ -240,7 +240,7 @@ export default class payment{
            .clear()
            .click()
         cy.wait(x)
-        cy.xpath("/html/body/div[3]/div/div/div/mat-option[2]")
+        cy.xpath("/html/body/div[3]/div/div/div/mat-option[1]")
            .should('exist')
            .and('be.visible')
            .click()

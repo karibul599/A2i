@@ -15,7 +15,8 @@ export default class RetainARAction {
     retainARAction.ClickTeamActivityReportBtn().click();
     retainARAction.wait1000();
     //Click Application Select Btn 
-    retainARAction.ClickApplicationSelectBtn().click();
+   //cy.get('[formcontrolname="month"]').should('be.visible').clear().type('0/2025');
+    //retainARAction.ClickApplicationSelectBtn();
     retainARAction.wait1000();
     //click ApproveBtn
     retainARAction.clickRetainBtn().click();

@@ -9,7 +9,7 @@ export default class AproveAR {
    }
    //Click Application Select Btn
    ClickApplicationSelectBtn(){
-       return cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-team-activity-report/app-team-activity-report-list-shell/app-team-activity-report-list/div/div/mat-table/mat-row/mat-cell[1]/mat-checkbox/div/div/input');
+       return cy.get('[type="checkbox"]').eq(0).should('exist').check({ force: true });
        }
    //click Approve Btn 
    clickApproveBtn(){

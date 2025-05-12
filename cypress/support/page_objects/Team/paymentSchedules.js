@@ -1,3 +1,5 @@
+//import { should } from "chai";
+
 export default class paymentSchedules{
     clickPaymentSchedulesBtn(){
       cy.get('a[href="/finance/payment-schedules"')
@@ -44,8 +46,7 @@ export default class paymentSchedules{
           .and('be.visible')
           .click()
         cy.wait(x)
-        cy.get('[id="mat-mdc-checkbox-2-input"]')
-          .check({force: true})
+        cy.get('[id="mat-mdc-checkbox-6-input"]').eq(0).should('exist').check({ force: true });
         cy.wait(x)
         cy.contains(' Make Payment ')
           .should('exist')
@@ -124,6 +125,124 @@ export default class paymentSchedules{
           .should('exist')
           .click({force: true})
     }
+    filterPaymentSchedulesIndividual(){
+      //Payee Type
+      const y = 'Mohammed Naser Miah';
+      const x=500;
+      cy.get('[formcontrolname="payeeType"]')
+        .should('exist')
+        .and('be.visible')
+        .click().click()
+      cy.wait(x)
+      cy.contains(' Individual ')
+        .should('exist')
+        .and('be.visible')
+        .click()
+      cy.wait(x)
+      //Payment To
+      cy.get('[formcontrolname="payee"]')
+        .should('exist')
+        .and('be.visible')
+        .click({force:true}).click({force:true})
+      cy.wait(x)
+      cy.contains(y)
+        .scrollIntoView()
+        .should('exist')
+        .and('be.visible')
+        .click()
+      cy.wait(x)
+      //Select Month
+      cy.get('[formcontrolname="month"]')
+        .should('exist')
+        .and('be.visible')
+        .clear()
+      //  .type('01/2025')
+      cy.wait(x)
+      cy.wait(x)
+      cy.contains(' Filter Data ')
+        .should('exist')
+        .and('be.visible')
+        .click()
+      cy.wait(x)
+      cy.get('[name="viewport"]').eq(0).should('exist').click({ force: true });
+      cy.wait(x)
+      cy.contains(' Make Payment ')
+        .should('exist')
+        .and('be.visible')
+        .click()
+      //Charged Account
+      cy.get('[formcontrolname="payerId"]')
+        .should('exist')
+        .and('be.visible')
+        .click().click() 
+      cy.wait(x)
+      cy.xpath('/html/body/div[3]/div[3]/div/div/mat-option[2]/span')
+        .should('exist')
+        .and('be.visible')
+        .click()
+      //Financial Codes
+      cy.get('[formcontrolname="financialCode"]')
+        .should('exist')
+        .and('be.visible')
+        .click() 
+      cy.wait(x)
+      cy.xpath('/html/body/div[3]/div[3]/div/div/mat-option[1]/span')
+        .should('exist')
+        .and('be.visible')
+        .click()
+      //Ref / Cheque
+      cy.get('[formcontrolname="refNo"]')
+        .should('exist')
+        .and('be.visible')
+        .type('Ref-1467')
+      cy.wait(x)
+      //Description
+      cy.get('[formcontrolname="description"]')
+        .should('exist')
+        .and('be.visible')
+        .type('Description')
+      cy.wait(x)
+      //Authorized By
+      cy.get('[formcontrolname="authorizedPersonId"]')
+        .should('exist')
+        .and('be.visible')
+        .click()
+      cy.wait(x)
+      cy.xpath('/html/body/div[3]/div[3]/div/div/mat-option[3]/span')
+        .should('exist')
+        .and('be.visible')
+        .click()
+     // Invoice Number
+      cy.get('[formcontrolname="invoiceNumber"]')
+        .should('exist')
+        .and('be.visible')
+        .type('Inv-56756')
+      cy.wait(x)
+      //Receipt Id
+      cy.get('[formcontrolname="receiptId"]')
+        .should('exist')
+        .and('be.visible')
+        .type('Rec-5656')
+      //Is Mushak
+      cy.get('[id="isMushak-input"]')
+        .first()
+        .check()
+      cy.wait(x)
+      //Receipt Date
+      cy.get('[formcontrolname="receiptDate"]')
+        .should('exist')
+        .and('be.visible')
+        .clear()
+        .type('12/12/2024')
+      //VAt/AIT
+      cy.get('[aria-label="vatToggle"]').click()
+
+
+      cy.xpath('/html/body/div[3]/div[2]/div/mat-dialog-container/div/div/app-bulk-schedular-payment-dialog/app-payment-schedule-batch-form-shell/app-payment-schedule-batch-form/div/div/div/button[1]/span[4]')
+        .scrollIntoView()
+        .should('exist')
+        .click({force: true})
+  }
 
 
 }

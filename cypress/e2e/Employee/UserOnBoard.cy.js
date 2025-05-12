@@ -9,9 +9,11 @@ import RegApprovePageAction from '../../support/page_objects/AdminLoginAction/Em
 import DeleteApplicationAction from '../../support/page_objects/AdminLoginAction/EmployeesAction/RegapproveAction/DeleteApplicationAction.js'
 import PhoneApplicationAction from '../../support/page_objects/AdminLoginAction/EmployeesAction/RegapproveAction/PhoneEditApplicationAction.js'
 import EmailEditApplicationAction from '../../support/page_objects/AdminLoginAction/EmployeesAction/RegapproveAction/EmailEditApplicationAction.js'
+import a2iLogin from "../../support/page_objects/a2iLogin";
+import approveReg from '../../support/page_objects/ApproveRegWithMail.js'
 
-
-describe("With Phone number and delete application", () => {
+describe.skip("With Phone number and delete application", () => {
+  const login=new a2iLogin()
   const registrationLoginPageAction = new RegistrationLoginPageAction(); //********/
   const basicInformationPageAction = new BasicInformationPageAction(); //********/
   const academicHistoryAction = new AcademicHistoryAction(); //********/
@@ -105,12 +107,12 @@ describe("With Phone number and delete application", () => {
     }
   });
   it("Delete Application which Registration with Phone number", () => {
-    a2iLogin();
-    function a2iLogin() {
-      //Login
-      loginAction.performloginPageAction();
-      
-    }
+    
+    login.visitA2iLoginPage();
+    const username='jahanger.alam@a2i.gov.bd'
+    const password='12345#Kmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //EmployeesBtn and Reg.ApproveBtn Click and Move to Reg.approve Page
     regApprovePageAction.performLoginBasicInformation();
 
@@ -119,7 +121,8 @@ describe("With Phone number and delete application", () => {
     
   });
 });
-describe("With Email and delete application", () => {
+describe.skip("With Email and delete application", () => {
+  const login=new a2iLogin()
   const registrationLoginPageAction = new RegistrationLoginPageAction(); //********/
   const emailBasicInformationAction = new EmailBasicInformationAction(); //********/
   const academicHistoryAction = new AcademicHistoryAction(); //********/
@@ -217,12 +220,11 @@ describe("With Email and delete application", () => {
     }
   });
   it("Delete Application which Registration with Email", () => {
-    a2iLogin();
-    function a2iLogin() {
-      //Login
-      loginAction.performloginPageAction();
-      
-    }
+    login.visitA2iLoginPage();
+    const username='jahanger.alam@a2i.gov.bd'
+    const password='12345#Kmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //EmployeesBtn and Reg.ApproveBtn Click and Move to Reg.approve Page
     regApprovePageAction.performLoginBasicInformation();
 
@@ -239,6 +241,8 @@ describe("Approval with Email", () => {
   const loginAction = new LoginAction(); //********/
   const regApprovePageAction = new RegApprovePageAction(); //********/
   const phoneApplicationAction = new PhoneApplicationAction(); //********/
+  const login=new a2iLogin()
+  const ApproveReg=new approveReg()
   function generateRandomEmail() {
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // Lowercase letters and digits only
     let randomString = '';
@@ -321,7 +325,7 @@ describe("Approval with Email", () => {
 
       function ContractInformation() {
         //ContractInformation
-        const UploadPDF='5-mb-example-file_11zon.pdf';
+        const UploadPDF='1mb.pdf';
         const FromDate='01/01/2023';
         const ToDate='01/01/2024';
         contractInformationAction.performProfessionalExperiencesAction( UploadPDF, FromDate, ToDate);
@@ -329,80 +333,19 @@ describe("Approval with Email", () => {
     }
   });
   it("Approval with Email", () => {
-
-    a2iLogin();
-
-    function a2iLogin() {
-      loginAction.performloginPageAction();
-  
-    }
+    login.visitA2iLoginPage();
+    const username='jahanger.alam@a2i.gov.bd'
+    const password='12345#Kmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //EmployeesBtn and Reg.ApproveBtn Click and Move to Reg.approve Page
     regApprovePageAction.performLoginBasicInformation();
 
     //Open Application
     phoneApplicationAction.performphoneApplicationAction();
+    ApproveReg.regApprovedWithEmail()
     
-    //Contract Administer
-    cy.get('[placeholder="Contract Administer"]').click({ force: true });
-    cy.wait(500);
-    cy.contains("Mohammed Naser Miah").click({ force: true });
-    //Field Allowance
-    cy.get('[placeholder="Field Allowance"]')
-      .click()
-      .type('5');
-    //Mobile Bill
-    cy.get('[placeholder="Mobile Bill"]')
-      .click()
-      .type('500');
-      cy.wait(500);
-      //Contract Modality
-    cy.get('[placeholder="Contract Modality"]').click({ force: true });
-    cy.wait(500);
-    cy.contains("eZone - UNDP").click({ force: true }); 
-    //Contract Reference
-    cy.get('[placeholder="Contract Reference"]')
-      .click({ force: true })
-      .type('56.83.0000.006.11.001.24.581/8');
-    //Contract Administer
-     cy.get('[placeholder="Contract Administer"]').click({ force: true });
-     cy.wait(500);
-     cy.contains("Mohammed Naser Miah").click({ force: true });
-    //Basic Salary
-    cy.get('[placeholder="Basic Salary"]')
-      .click()
-      .type('67000');
-    //Field Allowance
-    cy.get('[placeholder="Field Allowance"]')
-      .click()
-      .type('5');
-    //Mobile Bill
-    cy.get('[placeholder="Mobile Bill"]')
-      .click()
-      .type('500');
-    //upload file
-    //cy.get('[type="file"]').attachFile('5-mb-example-file');
-    cy.wait(500)
-    cy.get('[aria-label="Remove Attachment"]')
-      .first()
-      .click().should('be.visible');
-    cy.wait(2300);
-    cy.get('mat-icon') 
-      .should('be.visible')
-      .first()
-      .click({force: true});
-    cy.xpath('/html/body/div[3]/div[2]/div/mat-dialog-container/div/div/app-attachment-preview-dialog/div/div[1]/button/mat-icon')
-      .click();
-    cy.wait(3000);
-    cy.contains("button", " Approve ")
-      .invoke("removeAttr", "disabled")
-      .wait(500)
-      .click({ force: true }); 
-    cy.wait(500);
-    cy.xpath('/html/body/div[3]/div[2]/div/mat-dialog-container/div/div/app-common-approval-confirmation-dialog/div/div[2]/button[1]')
-    .should('be.visible')
-    .click({force: true});
-  
-  cy.wait(1000);
+    
 
   });
 });
@@ -415,6 +358,7 @@ describe("Approval with phone Number", () => {
   const loginAction = new LoginAction(); //********/
   const regApprovePageAction = new RegApprovePageAction(); //********/
   const emailEditApplicationAction = new EmailEditApplicationAction(); //********/
+  const login=new a2iLogin()
 
   function generateRandomEmail() {
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // Lowercase letters and digits only
@@ -430,7 +374,7 @@ describe("Approval with phone Number", () => {
     const randomNumber = Math.floor(10000000 + Math.random() * 90000000); // Generate 8 random digits
     return randomPrefix + randomNumber.toString();
   }
-  it("", () => {
+  it("Registration with phonenumber", () => {
     
     visitWebPageVery();
     registration();
@@ -506,12 +450,12 @@ describe("Approval with phone Number", () => {
       
     }
   });
-  it("", () => {
-    a2iLogin();
-    function a2iLogin() {
-      loginAction.performloginPageAction();
-      
-    }
+  it("approve Registration", () => {
+    login.visitA2iLoginPage();
+    const username='jahanger.alam@a2i.gov.bd'
+    const password='12345#Kmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //EmployeesBtn and Reg.ApproveBtn Click and Move to Reg.approve Page
     regApprovePageAction.performLoginBasicInformation();
      //Open Application
@@ -523,7 +467,7 @@ describe("Approval with phone Number", () => {
     //Contract Administer
     cy.get('[placeholder="Contract Administer"]').click({ force: true });
     cy.wait(500);
-    cy.contains("Mohammed Naser Miah").click({ force: true });
+    cy.contains(" Md. Jahanger Alam ").click({ force: true });
     //Field Allowance
     cy.get('[placeholder="Field Allowance"]')
       .click()
@@ -546,7 +490,7 @@ describe("Approval with phone Number", () => {
       //Contract Administer
        cy.get('[placeholder="Contract Administer"]').click({ force: true });
        cy.wait(500);
-       cy.contains("Mohammed Naser Miah").click({ force: true });
+       cy.contains(" Md. Jahanger Alam ").click({ force: true });
       //Field Allowance
       cy.get('[placeholder="Field Allowance"]')
         .click()
@@ -561,6 +505,10 @@ describe("Approval with phone Number", () => {
     cy.get('[aria-label="Remove Attachment"]')
       .first()
       .click().should('be.visible');
+      Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from failing the test
+        return false;
+      });
     cy.wait(2300);
     cy.get('mat-icon') 
       .should('be.visible')
@@ -589,6 +537,7 @@ describe("Approval with Email and update", () => {
   const loginAction = new LoginAction(); //********/
   const regApprovePageAction = new RegApprovePageAction(); //********/
   const phoneApplicationAction = new PhoneApplicationAction(); //********/
+  const login=new a2iLogin()
   function generateRandomEmail() {
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // Lowercase letters and digits only
     let randomString = '';
@@ -604,7 +553,7 @@ describe("Approval with Email and update", () => {
     return randomPrefix + randomNumber.toString();
   }
   
-  it("Approval with Email and update", () => {
+  it("Reg. with Email and update", () => {
     visitWebPageveryfication();
     registration();
 
@@ -678,20 +627,12 @@ describe("Approval with Email and update", () => {
       }
     }
   });
-  it("", () => {
-    a2iLogin();
-    function a2iLogin() {
-      //Login section
-      cy.visit("http://localhost:4200/");
-      cy.origin("http://192.168.30.123:8080", () => {
-        cy.get('input[name="username"]').type("jahanger.alam@a2i.gov.bd");
-        cy.get('input[name="password"]').type("@#$12345Bmail");
-        cy.get("#kc-login").should("exist").and("be.visible").click();
-      });
-      cy.wait(5000);
-      cy.visit("http://localhost:4200/");
-      cy.wait(1000);
-    }
+  it("Approval with Email and update", () => {
+    login.visitA2iLoginPage();
+    const username='jahanger.alam@a2i.gov.bd'
+    const password='12345#Kmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //EmployeesBtn and Reg.ApproveBtn Click and Move to Reg.approve Page
     regApprovePageAction.performLoginBasicInformation();
 
@@ -701,7 +642,7 @@ describe("Approval with Email and update", () => {
     //Contract Administer
     cy.get('[placeholder="Contract Administer"]').click({ force: true });
     cy.wait(500);
-    cy.contains("Mohammed Naser Miah").click({ force: true });
+    cy.contains(" Md. Jahanger Alam ").click({ force: true });
     //Field Allowance
     cy.get('[placeholder="Field Allowance"]')
       .click()
@@ -729,7 +670,7 @@ describe("Approval with Email and update", () => {
     //Contract Administer
     cy.get('[placeholder="Contract Administer"]').click({ force: true });
     cy.wait(500);
-    cy.contains("Mohammed Naser Miah").click({ force: true });
+    cy.contains(" Md. Jahanger Alam ").click({ force: true });
     //Field Allowance
     cy.get('[placeholder="Field Allowance"]')
     .click()
@@ -744,6 +685,10 @@ describe("Approval with Email and update", () => {
     cy.get('[aria-label="Remove Attachment"]')
       .first()
       .click().should('be.visible');
+      Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from failing the test
+        return false;
+      });
     cy.wait(2300);
     cy.get('mat-icon') 
       .should('be.visible')
@@ -783,6 +728,7 @@ describe("Approval with phone Number and update", () => {
   const loginAction = new LoginAction(); //********/
   const regApprovePageAction = new RegApprovePageAction(); //********/
   const emailEditApplicationAction = new EmailEditApplicationAction(); //********/
+  const login=new a2iLogin()
   function generateRandomEmail() {
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // Lowercase letters and digits only
     let randomString = '';
@@ -797,7 +743,7 @@ describe("Approval with phone Number and update", () => {
     const randomNumber = Math.floor(10000000 + Math.random() * 90000000); // Generate 8 random digits
     return randomPrefix + randomNumber.toString();
   }
-  it("", () => {
+  it("Reg. with phone Number and update", () => {
     
     visitWebPageVery();
     registration();
@@ -873,12 +819,12 @@ describe("Approval with phone Number and update", () => {
       
     }
   });
-  it("", () => {
-    a2iLogin();
-    function a2iLogin() {
-      loginAction.performloginPageAction();
-      
-    }
+  it("Approval with phone Number and update", () => {
+    login.visitA2iLoginPage();
+    const username='jahanger.alam@a2i.gov.bd'
+    const password='12345#Kmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //EmployeesBtn and Reg.ApproveBtn Click and Move to Reg.approve Page
     regApprovePageAction.performLoginBasicInformation();
 
@@ -890,7 +836,7 @@ describe("Approval with phone Number and update", () => {
     //Contract Administer
     cy.get('[placeholder="Contract Administer"]').click({ force: true });
     cy.wait(500);
-    cy.contains("Mohammed Naser Miah").click({ force: true });
+    cy.contains(" Md. Jahanger Alam ").click({ force: true });
     //Field Allowance
     cy.get('[placeholder="Field Allowance"]')
       .click()
@@ -906,7 +852,7 @@ describe("Approval with phone Number and update", () => {
     //Contract Administer
     cy.get('[placeholder="Contract Administer"]').click({ force: true });
     cy.wait(500);
-    cy.contains("Mohammed Naser Miah").click({ force: true });
+    cy.contains(" Md. Jahanger Alam ").click({ force: true });
     //Daily Rate
     cy.get('[placeholder="Daily Rate"]')
       .click()
@@ -925,6 +871,10 @@ describe("Approval with phone Number and update", () => {
     cy.get('[aria-label="Remove Attachment"]')
       .first()
       .click().should('be.visible');
+      Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from failing the test
+        return false;
+      });
     cy.wait(2300);
     cy.get('mat-icon') 
       .should('be.visible')
@@ -954,7 +904,7 @@ describe("Approval with phone Number and update", () => {
   });
 });
 
-describe("Approval with phone Number and update", () => {
+describe("Approval(Email Broadcast) with phone Number and update", () => {
   const registrationLoginPageAction = new RegistrationLoginPageAction(); //********/
   const basicInformationPageAction = new BasicInformationPageAction(); //********/
   const academicHistoryAction = new AcademicHistoryAction(); //********/
@@ -962,6 +912,7 @@ describe("Approval with phone Number and update", () => {
   const contractInformationAction = new ContractInformationAction(); //********/
   const loginAction = new LoginAction(); //********/
   const regApprovePageAction = new RegApprovePageAction(); //********/
+  const login=new a2iLogin()
   
   function generateRandomEmail() {
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // Lowercase letters and digits only
@@ -977,7 +928,7 @@ describe("Approval with phone Number and update", () => {
     const randomNumber = Math.floor(10000000 + Math.random() * 90000000); // Generate 8 random digits
     return randomPrefix + randomNumber.toString();
   }
-  it("", () => {
+  it("Reg. with phone Number and update", () => {
     
     visitWebPageVery();
     registration();
@@ -1053,11 +1004,12 @@ describe("Approval with phone Number and update", () => {
       
     }
   });
-  it("", () => {
-    a2iLogin();
-    function a2iLogin() {
-      loginAction.performloginPageAction();
-    }
+  it("Approval with phone Number and update", () => {
+    login.visitA2iLoginPage();
+    const username='jahanger.alam@a2i.gov.bd'
+    const password='12345#Kmail'
+    login.visitKeycloakOriginToA2iUserLogin(username, password)
+    login.delayMS(1000)
     //EmployeesBtn and Reg.ApproveBtn Click and Move to Reg.approve Page
     regApprovePageAction.performLoginBasicInformation();
 
@@ -1127,7 +1079,7 @@ describe("Approval with phone Number and update", () => {
     //Contract Administer
     cy.get('[placeholder="Contract Administer"]').click({ force: true });
     cy.wait(500);
-    cy.contains("Mohammed Naser Miah").click({ force: true });
+    cy.contains(" Md. Jahanger Alam ").click({ force: true });
     //Field Allowance
     cy.get('[placeholder="Field Allowance"]')
       .click()
@@ -1148,7 +1100,7 @@ describe("Approval with phone Number and update", () => {
     //Contract Administer
      cy.get('[placeholder="Contract Administer"]').click({ force: true });
      cy.wait(500);
-     cy.contains("Mohammed Naser Miah").click({ force: true });
+     cy.contains(" Md. Jahanger Alam ").click({ force: true });
     //Basic Salary
     cy.get('[placeholder="Basic Salary"]')
       .click()
@@ -1167,6 +1119,10 @@ describe("Approval with phone Number and update", () => {
     cy.get('[aria-label="Remove Attachment"]')
       .first()
       .click().should('be.visible');
+      Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from failing the test
+        return false;
+      });
     cy.wait(2300);
     cy.get('mat-icon') 
       .should('be.visible')

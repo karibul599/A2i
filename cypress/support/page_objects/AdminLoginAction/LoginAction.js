@@ -1,5 +1,5 @@
-import LoginPage from '../AdminLogin/Login';
-
+//import LoginPage from '../AdminLogin/Login';
+import LoginPage from '../AdminLogin/Employees/RegApprove/LoginPage';
 export default class LoginPageAction {
   constructor() {
     globalThis.loginPageAction = new LoginPage();
@@ -11,11 +11,13 @@ export default class LoginPageAction {
     
     //Visit URl 
     loginPageAction.visit();
-    loginPageAction.wait1000();
+    cy.wait(1000)
+    //loginPageAction.wait1000();
     
     //Number/Email
-    loginPageAction.VisitOrigin();
-    loginPageAction.wait1000();
+   // loginPageAction.VisitOrigin();
+    cy.wait(1000)
+    //loginPageAction.wait1000();
     
   }
 }

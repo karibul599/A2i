@@ -12,7 +12,7 @@ describe("(Module: Finance(IOU)", () => {
       "jahanger.alam@a2i.gov.bd",
       "jalal.ahmed@a2i.gov.bd"
     ];
-    const password='@#$12345Bmail'
+    const password='12345#Kmail'
     login.visitKeycloakOriginToA2iUserLogin(username[0], password)
     login.delayMS(1000)
     clickBtn.clickA2iFinanceBtn()
@@ -49,7 +49,7 @@ describe("(Module: Finance(IOU)", () => {
       "jahanger.alam@a2i.gov.bd",
       "jalal.ahmed@a2i.gov.bd"
     ];
-    const password='@#$12345Bmail'
+    const password='12345#Kmail'
     login.visitKeycloakOriginToA2iUserLogin(username[0], password)
     login.delayMS(1000)
     clickBtn.clickA2iFinanceBtn()
@@ -88,7 +88,7 @@ describe('(Module: Finance(IOU)',()=>{
       "jahanger.alam@a2i.gov.bd",
       "rakib.younus@a2i.gov.bd"
     ];
-    const password='@#$12345Bmail'
+    const password='12345#Kmail'
     login.visitKeycloakOriginToA2iUserLogin(username[0], password)
     login.delayMS(1000)
     clickBtn.clickA2iFinanceBtn()

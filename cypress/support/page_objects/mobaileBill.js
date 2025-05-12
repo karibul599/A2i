@@ -9,24 +9,24 @@ export default class mobaileBill{
     payMobileBill(){
         const x=500;
         cy.wait(x)
-        cy.xpath('/html/body/app-root/app-erp-sidenav/div/div/div[2]/main/app-mobile-bill/app-mobile-bill-list-shell/app-mobile-bill-list/div/div/div[2]/mat-table/mat-row[2]/mat-cell[1]/mat-checkbox/div/div/input')
-          .check({force: true});
-        //Allowance Rate
-        cy.wait(x)
-        cy.get('[formcontrolname="allowanceRateAsContract"]')
-          .eq(1)
-          .should('exist')
-          .and('be.visible')
-          .clear()
-          .type(5000);
-        //Paid Amount
-        cy.wait(x)
-        cy.get('[formcontrolname="allowanceRate"]')
-          .eq(1)
-          .should('exist')
-          .and('be.visible')
-          .clear()
-          .type(500);
+        cy.get('[id="mat-mdc-checkbox-1-input"]').eq(0).should('exist').check({ force: true });
+
+        // //Allowance Rate
+        // cy.wait(x)
+        // cy.get('[formcontrolname="allowanceRateAsContract"]')
+        //   .eq(1)
+        //   .should('exist')
+        //   .and('be.visible')
+        //   .clear()
+        //   .type(5000);
+        // //Paid Amount
+        // cy.wait(x)
+        // cy.get('[formcontrolname="allowanceRate"]')
+        //   .eq(1)
+        //   .should('exist')
+        //   .and('be.visible')
+        //   .clear()
+        //   .type(500);
         cy.contains('Make Payment ')
           .should('exist')
           .and('be.visible')

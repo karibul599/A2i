@@ -3,7 +3,7 @@ export default class AcademicHistory{
 
     EducationLevel() {
        //Education Level
-      return  cy.get('div>mat-select>div>div[id="mat-select-value-1"]');
+      return  cy.get('[id="mat-select-0"]');
       }
     SelectEducationLevel() {
         //Select Education Level
@@ -65,6 +65,7 @@ export default class AcademicHistory{
     SelectResultType2() {
         //Education Level
        return  cy.xpath('/html/body/div[2]/div[2]/div/div/mat-option[2]');
+       
        }
        Result2() {
         //Result
